@@ -1,7 +1,7 @@
-Full Name:
-GitHub ID:
-Binghamton CS userid:
-Discord name:
+Full Name: Juan Naranjo
+GitHub ID: Losera
+Binghamton CS userid:jnaranj@binghamton.edu
+Discord name: Juan Naranjo
 
 Please type or copy the CS 310 honesty statement here:
 
