@@ -1,21 +1,26 @@
-class AnimalInZoo {
-  private:
-	  int numAnimals;
-	  Animal animal;
-	
-   public:
-      Animal(string speciesName, unsigned int discoveryYear) {
-         species = speciesName;
-         year_discovered = discoveryYear;
-      }
+#include "AnimalsInZoo.h"
+#include <iostream>
+using namespace std;
 
-      Animal() : species(""), year_discovered(0) {};
+ AnimalsInZoo::AnimalsInZoo() : numAnimals(0){
+ }
 
-      void display() {
-         cout << species << " [" << year_discovered << "]" << endl;
-      }
 
-   private:
-      string species = "";
-      unsigned int year_discovered = 0;
-};
+ AnimalsInZoo::AnimalsInZoo(const Animal& animal) : numAnimals(1), animal(animal)
+		 {
+ }
+
+ void AnimalsInZoo::display() const{
+   cout << "Number of animals: " << numAnimals << endl;
+
+   if (numAnimals > 0){
+     animal.display();
+   }
+ }
+ 
+ 
+
+
+
+
+

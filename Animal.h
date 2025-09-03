@@ -1,17 +1,22 @@
+#ifndef ANIMAL_H
+#define ANIMAL_H
+
+#include <string>
+#include <iostream>
+using namespace std;
+
+
 class Animal {
    public:
-      Animal(string speciesName, unsigned int discoveryYear) {
-         species = speciesName;
-         year_discovered = discoveryYear;
-      }
-
-      Animal() : species(""), year_discovered(0) {};
-
-      void display() {
-         cout << species << " [" << year_discovered << "]" << endl;
-      }
+	Animal();
+	Animal(string speciesName, unsigned int discoveryYear);
+	void display() const;
 
    private:
-      string species = "";
+      string species;
       unsigned int year_discovered = 0;
 };
+
+
+#endif
+
