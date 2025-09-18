@@ -2,25 +2,30 @@
 # More interesting makefiles to come!
 #
 # Specifiy the target
-all: zoo
+CXX = g++
+CXXFLAGS = -Wall -Wextra -std=c++17
 
-# Specify the object files that the target depends on
-# Also specify the object files needed to create the executable
-zoo: zoo.o Animal.o AnimalsInZoo.o
-	g++ zoo.o Animal.o AnimalsInZoo.o -o zoo
-	./zoo
-# Specify how the object files should be created from source files
-zoo.o: zoo.cpp
-	g++ -Wall -Wextra -c zoo.cpp
+TARGET = zoo
 
-Animal.o: Animal.cpp
-	g++ -Wall -Wextra -c Animal.cpp
+OBS = zoo.o Animal.o AnimalsInZoo.o
 
-AnimalsInZoo.o: AnimalsInZoo.cpp
-	g++ -Wall -Wextra -c AnimalsInZoo.cpp
+all: $(TARGET)
 
-# Specify the object files and executables that are generated
-# and need to be removed to re-compile the whole thing
+$(TARGET): $(OBS)
+	$(CXX) $(CXXFLAGS) $(OBS) -o $(TARGET)
+	./$(TARGET)
+
+
+zoo.o: zoo.cpp Animal.h AnimalsInZoo.h
+	$(CXX) $(CXXFLAGS) -c zoo.cpp
+
+Animal.o: Animal.cpp Animal.h
+	$(CXX) $(CXXFLAGS) -c Animal.cpp
+
+AnimalsInZoo.o: AnimalsInZoo.cpp AnimalsInZoo.h Animal.h
+	$(CXX) $(CXXFLAGS) -c AnimalsInZoo.cpp
+
 clean:
-	rm -f *.o zoo
-	rm -f *.o Animal
+	rm -f *.o $(TARGET)
+
+
